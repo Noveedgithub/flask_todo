@@ -10,14 +10,14 @@ pipeline{
         }
         stage("Build image"){
             steps{
-                sh 'docker pull noveedwork/activity4:app'
-                sh 'docker pull noveedwork/activity4:server'
+                sh 'docker build -t noveed-work/todo-app:app .'
+                sh 'docker build -t noveed-work/todo-app:server -f Dockerfile.nginx .'
             }
         }
         stage("Running the container"){
             steps{
-                sh 'docker run -d --name app --network new-network noveedwork/activity4:app'
-                sh 'docker run -d -p 80:80 --name server --network new-network noveedwork/activity4:server'
+                sh 'docker run -d --name todo-app --network new-network noveed-work/todo-app:app'
+                sh 'docker run -d -p 80:80 --name mynginx --network new-network noveed-work/todo-app:server'
             }
         }
     }
