@@ -10,8 +10,8 @@ pipeline{
         }
         stage("Build image"){
             steps{
-                sh 'docker build -t todo-app .'
-                sh 'docker build -t mynginx -f Dockerfile.nginx .'
+                sh 'docker build -t noveed-work/todo-app:app .'
+                sh 'docker build -t noveed-work/todo-app:server -f Dockerfile.nginx .'
             }
         }
         stage("Running the container"){
