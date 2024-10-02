@@ -9,6 +9,10 @@ spec:
   selector:
     matchLabels:
       app: activity4
+  strategy:
+    rollingUpdate: 
+      maxSurge: 25% 
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
