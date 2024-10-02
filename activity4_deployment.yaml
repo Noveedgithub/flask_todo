@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: activity4-deployment
+  labels:
+    app: activity4
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: activity4
+  template:
+    metadata:
+      labels:
+        app: activity4
+    spec:
+      containers:
+      - name: app
+        image: noveedwork/activity4:app
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
