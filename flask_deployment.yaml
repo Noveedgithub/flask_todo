@@ -1,14 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: activity4-deployment
-  labels:
-    app: activity4
+  name: flask-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: activity4
+      app: flask
   strategy:
     rollingUpdate: 
       maxSurge: 25% 
@@ -16,11 +14,10 @@ spec:
   template:
     metadata:
       labels:
-        app: activity4
+        app: flask
     spec:
       containers:
-      - name: app
+      - name: flask-app
         image: noveedwork/activity4:app
-        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 5000
