@@ -20,4 +20,4 @@ spec:
       - name: flask-app
         image: noveedwork/activity4:app
         ports:
-        - containerPort: 5000
+        - containerPort: 5500

@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  type: LoadBalancer  # Expose the Nginx service externally
+  type: LoadBalancer  # Use NodePort for local Kubernetes clusters like Minikube
   selector:
     app: nginx
   ports:
   - protocol: TCP
-    port: 80       # External port to expose
-    targetPort: 80 # Nginx container's port
+    port: 80
+    targetPort: 80
+    nodePort: 30007  # Specify a NodePort between 30000-32767
