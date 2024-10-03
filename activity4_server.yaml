@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: activity4-server
+  labels:
+    app: activity4-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: activity4-server
+  strategy:
+    rollingUpdate: 
+      maxSurge: 25% 
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: activity4-server
+    spec:
+      containers:
+      - name: app
+        image: noveedwork/activity4:server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
