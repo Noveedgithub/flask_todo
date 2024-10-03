@@ -32,10 +32,7 @@ metadata:
   name: nginx-config
 data:
   nginx.conf: |
-    events {
-        worker_connections 1024;
-    }
-
+    events {}
     http {
         server {
             listen 80;
